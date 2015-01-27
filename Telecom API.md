@@ -1,5 +1,6 @@
 # Telecom API
-Both api version and response format should be in the request headers
+1. Both api version and response format should be in the request headers
+2. persistance and business logic are encapsulated inside the service
 
 ```php
 <?php
