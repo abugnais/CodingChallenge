@@ -13,7 +13,6 @@ option #3 seems to be the simplest, if a user tries to upload an older verison o
 
 ```php
 <?php
-
 class Document {
     protected $id;
 
