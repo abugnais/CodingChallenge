@@ -53,7 +53,7 @@ class Customer {
 
     /**
      * one to many
-     * list of phone numbers for the current user
+     * list of phone numbers for the current customer
      */
     private $phoneNumbers;
 }
@@ -69,7 +69,7 @@ class PhoneNumber {
 
     /**
      * many to one
-     * refers to the user
+     * refers to the customer
      */
     private $customer;
 }
