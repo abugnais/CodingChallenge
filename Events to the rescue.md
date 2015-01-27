@@ -1,6 +1,4 @@
-# Coding Challenge
-
-## 1. Events to the rescue!
+# Events to the rescue!
 
 the problem with this state machine is that it publishes generic events, that needs to be parsed by every client that will listen to the event dispatcher, since it cannot be extended via inheritance, the best way to wrap it is by handling the event mapping logic in the dispatcher itself.
 
