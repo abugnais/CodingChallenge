@@ -78,6 +78,7 @@ class PhoneNumber {
  */
 class PhoneNumbersRepository extends EntityRepository {
     public function activate(PhoneNumber $phoneNumber) {
+        // might involve more business logic
         $phoneNumber->is_active =   1;
         $this->entityManager->persist($phoneNumber);
         $this->entityManager->flush();
