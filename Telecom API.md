@@ -21,7 +21,7 @@ class TelecomController {
      *
      */
     public function getAllPhoneNumbersAction() {
-        return $this->entityManager->getRepository('PhoneNumber')->findAll();
+        return $this->get('phoneNumber.service')->findAll();
     }
 
     /**
@@ -29,8 +29,8 @@ class TelecomController {
      * endpoint:    GET /customers/{id}/phones/
      *
      */
-    public function getCustomerPhoneNumbersAction(Customer $customer) {
-        return $customer->phoneNumbers;
+    public function getCustomerPhoneNumbersAction($id) {
+        return $this->get('phoneNumber.service')->findByCustomerId($id);
     }
 
     /**
@@ -38,51 +38,27 @@ class TelecomController {
      * endpoint:    PATCH  /customers/phones/{id}/
      *
      */
-    public function activatePhoneNumberAction(PhoneNumber $phoneNumber) {
-        return $this->entityManager->getRepository('PhoneNumber')->activate();
+    public function activatePhoneNumberAction($id) {
+        return $this->get('phoneNumber.service')->activate($id);
     }
 }
 
-/**
- * Entities
- */
-class Customer {
-    private $id;
+class PhoneNumberService {
+    private $em;
 
-    private $name;
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
 
-    /**
-     * one to many
-     * list of phone numbers for the current customer
-     */
-    private $phoneNumbers;
-}
+    public function findAll() {
+        return $this->em->getRepository('PhoneNumber')->findAll();
+    }
 
-class PhoneNumber {
-    private $id;
-
-    private $customerId;
-
-    private $value;
-
-    private $is_active;
-
-    /**
-     * many to one
-     * refers to the customer
-     */
-    private $customer;
-}
-
-/**
- * Custom Repository
- */
-class PhoneNumbersRepository extends EntityRepository {
-    public function activate(PhoneNumber $phoneNumber) {
-        // might involve more business logic
-        $phoneNumber->is_active =   1;
-        $this->entityManager->persist($phoneNumber);
-        $this->entityManager->flush();
+    public function activate($id) {
+        $phoneNumber    =   $this->em->getRepository('PhoneNumber')->find($id);
+        $phoneNumber->setIsActive(1);
+        $this->em->persist($phoneNumber);
+        $this->em->flush();
         return $phoneNumber;
     }
 }
