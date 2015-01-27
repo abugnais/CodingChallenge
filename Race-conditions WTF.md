@@ -5,8 +5,11 @@ Jhon downloaded todays version of the document and he started adding to it, late
 
 Solution:
 Versioning, multiple options are available:
+
 1. using a version control system at the back-end (too complicated when dealing with compressed content like odt).
+
 2. storing all historical versions of the same document (ineffecient, not feasible).
+
 3. storing the downloaded document version number/ user-id pair and warning the user when uploading an older version of the document.
 
 option #3 seems to be the simplest, if a user tries to upload an older verison of the document then the system will warn him and ask for confirmation.
