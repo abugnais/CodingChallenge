@@ -1,11 +1,12 @@
 # Telecom API
-1. Both api version and response format should be in the request headers
-2. persistance and business logic are encapsulated inside the service
+- Both API version and response format should be in the request headers
+- Persistance and business logic are encapsulated inside the service
+- This is roughly based on symfony
 
 ```php
 <?php
 /**
- * Roughly based on symfony
+ * 
  */
 
 /**
