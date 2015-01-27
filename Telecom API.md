@@ -6,10 +6,6 @@
 ```php
 <?php
 /**
- * 
- */
-
-/**
  * controller
  *
  * controller methods should only return data, data format and serialization should be done
