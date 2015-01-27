@@ -63,5 +63,9 @@ class PhoneNumberService {
         $this->em->flush();
         return $phoneNumber;
     }
+
+    public function findByCustomerId($customerId) {
+        return $this->em->getRepository('PhoneNumber')->findBy(array('customer_id'=>$customerId));
+    }
 }
 ```
