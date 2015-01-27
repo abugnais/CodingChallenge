@@ -61,7 +61,7 @@ class Customer {
 class PhoneNumber {
     private $id;
 
-    private $userId;
+    private $customerId;
 
     private $value;
 
@@ -71,7 +71,7 @@ class PhoneNumber {
      * many to one
      * refers to the user
      */
-    private $user;
+    private $customer;
 }
 
 /**
