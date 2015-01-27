@@ -1,4 +1,5 @@
 # Telecom API
+Both api version and response format should be in the request headers
 
 ```php
 <?php
