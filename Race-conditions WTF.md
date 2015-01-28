@@ -12,7 +12,7 @@ Versioning, multiple options are available:
 
 3. storing the downloaded document version number/ user-id pair and warning the user when uploading an older version of the document.
 
-option #3 seems to be the simplest, if a user tries to upload an older verison of the document then the system will warn him and ask for confirmation.
+option #3 seems to be the simplest, if a user tries to upload an older verison of the document then the system will reject the upload and as the user to download the newer version.
 
 ```php
 <?php
@@ -62,7 +62,7 @@ class DocumentService {
         $document   =   $this->em->getRepository('Document')->find($document_id);
         $documentUserVersion    =   $this->em->getRepository('DocumentUserVersion')->findBy(array('user_id'=>$user_id, 'document_id'=>$document_id));
         if(!empty($documentUserVersion) && $documentUserVersion->version_number < $document->version_number) {
-            throw SomeException('warn user of a possible overwrite');
+            throw SomeException('you need to download the newer version of the document');
         }
 
         $document->setFile($file);
