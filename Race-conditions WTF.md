@@ -58,10 +58,10 @@ class DocumentService {
         return $document;
     }
 
-    public function upload($user_id, $document_id, $file, $force = false) {
+    public function upload($user_id, $document_id, $file) {
         $document   =   $this->em->getRepository('Document')->find($document_id);
         $documentUserVersion    =   $this->em->getRepository('DocumentUserVersion')->findBy(array('user_id'=>$user_id, 'document_id'=>$document_id));
-        if(!empty($documentUserVersion) && $documentUserVersion->version_number < $document->version_number && !$force) {
+        if(!empty($documentUserVersion) && $documentUserVersion->version_number < $document->version_numberfo) {
             throw SomeException('warn user of a possible overwrite');
         }
 
